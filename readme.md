@@ -17,4 +17,10 @@ The process for processing the raw recording is performed using the `wav_process
 	b. Applying the noisereduction using the noise samples
 	c. Applying a higpass filter  (cutoff frequency = 1 kHz)
 	d. Applying a notch filter between 43 and 47 Hz
-	e. Write the processed file to disk: recordings 1-16 will be used for training, 17-18 for validation and 19-20 for testing
+	e. Create a mel spectrogram from the sound wave to use in a CNN
+
+## Proof of Concept training
+
+The procressed spectrograms ordered in a file structure suitabel for transfer learning. The appropriate zip file is located **[here](https://drive.google.com/open?id=1bnaGOYfbU7KD6jsE5w3N_7Uk9SC0Oh7w)**.
+
+I used InceptionV3 as a pretrained CNN. Although the weights for the imagenet training didn't yield very good results at first, and trying to pretrain only a top dense classifiication layer pretty much failed, I was able to get an **84%** test accuracy with retraining the whole InceptionV3 CNN. The training was performed in google collab, and it's process can be seen in `deepStep_transfer_PoC.ipynb` (this notebook is strongly based on my solution for the 4th small assignment). The weights for this CNN are located in `full_model.hdf5`, available from my drive: [full_model.hdf5](https://drive.google.com/open?id=1H5F1x7gXDTHbBxvSrYcN_rhQ4d5tL0Ae)
