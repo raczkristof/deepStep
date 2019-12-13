@@ -107,4 +107,5 @@ venv.bak/
 data*/
 online_datasets/
 audacity_files/
-full_model.hdf5
+PoC/full_model.hdf5
+PreTraining/*hdf5
